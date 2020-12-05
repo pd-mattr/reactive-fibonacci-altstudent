@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script src="rx.min.js"></script>
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+  </head>
+  <body>
+    <h1>Generating the Fibonacci Sequence</h1>
+      <p>Write rxjs code to generate a fibonacci sequence.  Please do it "from scratch" by building a <code>new Observable</code>.  We will investigate "better" ways later.  You should emit only the first 200 fibonacci numbers.  Add your code in <code>fib.js</code> in the <code>fib</code> variable.</p>
+
+      <p><strong>Further:</strong> Can you write a version that infinitely generates numbers wihout hanging the browser? Put a 500ms delay between each emission so you can watch the events appearing in the list below.  Add your code in <code>fib.js</code> in the <code>forever_fib</code> variable.</p>
+
+      <div id="mocha"></div>
+      <script src="fib.js"></script>
+      <script>
+        mocha.setup("bdd");
+        tests();
+        mocha.run();
+      </script>
+
+      <div id="sequence" style="float:left">
+        <h2>The first 50</h2>
+      </div>
+      <script>
+        var ol = $("<ol/>");
+        fib.subscribe(v => {
+          ol.append($("<li/>").text(v));
+        });
+        $("#sequence").append(ol);
+      </script>
+
+      <div id="forever" style="float:right">
+        <h2>All (eventually)</h2>
+      </div>
+      <script>
+        var ol = $("<ol/>");
+        fib_forever.subscribe(v => {
+          ol.append($("<li/>").text(v));
+        });
+        $("#forever").append(ol);
+      </script>
+
+  </body>
+</html>
