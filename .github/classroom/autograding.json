@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "all tests",
+      "setup": "npm install mocha",
+      "run": "node_modules/.bin/mocha --exit",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 100
+    }
+  ]
+}
